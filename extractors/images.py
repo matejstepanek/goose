@@ -73,6 +73,13 @@ class ImageExtractor(BaseExtractor):
             "|mediaplex.com|adsatt|view.atdmt"
         )
 
+    def get_relevant_images(self, doc, top_node):
+        relevant_images = []
+        good_images = self.get_image_candidates(top_node)
+        if good_images:
+            relevant_images = self.fetch_images(good_images, 0).keys()
+        return relevant_images
+
     def get_best_image(self, doc, topNode):
         image = self.check_known_elements()
         if image:

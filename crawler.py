@@ -181,7 +181,7 @@ class Crawler(object):
 
             # image handling
             if self.config.enable_image_fetching:
-                self.get_image()
+                self.get_images()
 
             # post cleanup
             self.article.top_node = self.extractor.post_cleanup()
@@ -200,10 +200,11 @@ class Crawler(object):
             return RawHelper.get_parsing_candidate(crawl_candidate.url, crawl_candidate.raw_html)
         return URLHelper.get_parsing_candidate(crawl_candidate.url)
 
-    def get_image(self):
+    def get_images(self):
         doc = self.article.raw_doc
         top_node = self.article.top_node
         self.article.top_image = self.image_extractor.get_best_image(doc, top_node)
+        self.article.images = self.image_extractor.get_relevant_images(doc, top_node)
 
     def get_html(self, crawl_candidate, parsing_candidate):
         # we got a raw_tml

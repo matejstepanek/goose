@@ -60,6 +60,9 @@ class Article(object):
         # we think represents this article
         self.top_image = None
 
+        # holds relevant Image objects from article
+        self.images = []
+
         # holds a set of tags that may have
         # been in the artcle, these are not meta keywords
         self.tags = []
