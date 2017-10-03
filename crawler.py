@@ -170,6 +170,9 @@ class Crawler(object):
         # let's process it
         if self.article.top_node is not None:
 
+            # top node with img tags
+            self.article.top_node_tags = deepcopy(self.article.top_node)
+
             # article links
             self.article.links = self.links_extractor.extract()
 

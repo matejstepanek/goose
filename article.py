@@ -56,6 +56,9 @@ class Article(object):
         # is a candidate for the main body of the article
         self.top_node = None
 
+        # holds the top Element with img tags
+        self.top_node_tags = None
+
         # holds the top Image object that
         # we think represents this article
         self.top_image = None
